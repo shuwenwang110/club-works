@@ -1,0 +1,128 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Club Works - Shuwen Wang Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="white-spider.css" />
+  <script src="libraries/p5.min.js" defer></script>
+  <script src="space-effects.js" defer></script>
+  <script src="white-spider.js" defer></script>
+  <script src="protect-media.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <nav class="top-nav" aria-label="Page navigation">
+      <a class="back-link" href="https://shuwenwang110.github.io/Portfolio/" data-transition>Back to portfolio</a>
+      <p class="page-explain">Design work for the Character Creator & World Builder's Guild at school, where I have worked on promotion and visual design for two years, including posters and all ID card systems.</p>
+    </nav>
+
+    <section class="project-hero">
+      <div>
+        <p class="eyebrow">Club series</p>
+        <h1 class="project-title">Club Works</h1>
+      </div>
+    </section>
+
+    <section class="club-gallery" aria-label="Club series works">
+      <button class="club-card" type="button" data-full="club-works/poster.jpg" aria-label="Open poster">
+        <img src="club-works/poster.jpg" alt="Club poster" loading="eager" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/poster1.png" aria-label="Open poster 1">
+        <img src="club-works/poster1.png" alt="Club poster 1" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/poster2.png" aria-label="Open poster 2">
+        <img src="club-works/poster2.png" alt="Club poster 2" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/poster3.png" aria-label="Open poster 3">
+        <img src="club-works/poster3.png" alt="Club poster 3" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/poster4.png" aria-label="Open poster 4">
+        <img src="club-works/poster4.png" alt="Club poster 4" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/poster5.png" aria-label="Open poster 5">
+        <img src="club-works/poster5.png" alt="Club poster 5" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/%E4%B8%9C%E6%96%B91.png" aria-label="Open oriental design 1">
+        <img src="club-works/%E4%B8%9C%E6%96%B91.png" alt="Club oriental design 1" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/%E4%B8%9C%E6%96%B92.png" aria-label="Open oriental design 2">
+        <img src="club-works/%E4%B8%9C%E6%96%B92.png" alt="Club oriental design 2" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/%E6%B5%B7%E6%B4%8B1.png" aria-label="Open ocean design">
+        <img src="club-works/%E6%B5%B7%E6%B4%8B1.png" alt="Club ocean design" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/%E7%A7%91%E6%8A%802.png" aria-label="Open technology design 2">
+        <img src="club-works/%E7%A7%91%E6%8A%802.png" alt="Club technology design 2" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/%E7%A7%91%E6%8A%803.png" aria-label="Open technology design 3">
+        <img src="club-works/%E7%A7%91%E6%8A%803.png" alt="Club technology design 3" loading="lazy" />
+      </button>
+      <button class="club-card" type="button" data-full="club-works/%E7%A7%91%E6%8A%804.png" aria-label="Open technology design 4">
+        <img src="club-works/%E7%A7%91%E6%8A%804.png" alt="Club technology design 4" loading="lazy" />
+      </button>
+      <button class="club-card club-card-wide" type="button" data-full="club-works/%E5%8D%A1%E4%B8%80%E4%BB%A3.png" aria-label="Open card first generation">
+        <img src="club-works/%E5%8D%A1%E4%B8%80%E4%BB%A3.png" alt="Club card first generation" loading="lazy" />
+      </button>
+      <button class="club-card club-card-wide" type="button" data-full="club-works/%E5%8D%A1%E4%BA%8C%E4%BB%A3.png" aria-label="Open card second generation">
+        <img src="club-works/%E5%8D%A1%E4%BA%8C%E4%BB%A3.png" alt="Club card second generation" loading="lazy" />
+      </button>
+    </section>
+    <a class="bottom-back-link" href="https://shuwenwang110.github.io/Portfolio/" data-transition>Back to portfolio</a>
+  </main>
+
+  <div class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <img class="lightbox-image" src="" alt="" />
+  </div>
+  <div class="fade-screen" aria-hidden="true"></div>
+  <script>
+    document.querySelectorAll("[data-transition]").forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        document.body.classList.add("is-leaving");
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 520);
+      });
+    });
+
+    const lightbox = document.querySelector(".lightbox");
+    const lightboxImage = document.querySelector(".lightbox-image");
+
+    function openLightbox(src, alt) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt;
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      setTimeout(() => {
+        lightboxImage.src = "";
+      }, 180);
+    }
+
+    document.querySelectorAll(".club-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const image = card.querySelector("img");
+        openLightbox(card.dataset.full, image.alt);
+      });
+    });
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && document.body.classList.contains("lightbox-open")) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
+
